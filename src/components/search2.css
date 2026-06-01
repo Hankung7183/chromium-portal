@@ -1,0 +1,155 @@
+.engine {
+	position: relative;
+	margin-top: 8px;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	color: #fff;
+	border: 1px solid rgba(255, 255, 255, 0.25);
+	background-color: rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(8px);
+	border-radius: 24px;
+}
+
+.input {
+	position: relative;
+	display: flex;
+	flex: 1;
+	font-weight: 400;
+	padding: 0;
+	color: currentColor;
+	appearance: none;
+	height: 56px;
+	padding-top: 0.8rem;
+	padding-bottom: 0.8rem;
+	font-size: 22px;
+	background-color: transparent;
+	border: 0;
+	outline: none;
+	user-select: none;
+	resize: none;
+	scrollbar-width: none;
+}
+
+.input::placeholder {
+	color: #fff;
+	font-weight: 400;
+}
+
+.input::-webkit-scrollbar {
+	display: none;
+}
+
+.icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	color: currentColor;
+	width: 56px;
+}
+
+.submit {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	appearance: none;
+	width: 56px;
+	height: 56px;
+	border-top-right-radius: 24px;
+	border-bottom-right-radius: 24px;
+	padding: 0;
+	color: currentColor;
+	background-color: transparent;
+	border: 0;
+	outline: none;
+	transition:
+		color 0.15s ease-out,
+		background-color 0.15s ease-out;
+	cursor: pointer;
+}
+
+.submit:hover,
+.submit:focus {
+	background-color: rgba(255, 255, 255, 0.15);
+}
+
+.suggestion {
+	position: absolute;
+	top: 100%;
+	z-index: 10;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	color: #fff;
+	gap: 4px;
+	margin-top: 8px;
+	padding: 8px 44px;
+	border: 1px solid rgba(255, 255, 255, 0.25);
+	background-color: rgba(0, 0, 0, 0.125);
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+	backdrop-filter: blur(8px);
+	border-radius: 24px;
+	overflow-y: auto;
+}
+
+.suggestion.-custom-scrollbar::-webkit-scrollbar {
+	width: 0.75vw;
+	background-color: transparent;
+}
+
+.suggestion.-custom-scrollbar::-webkit-scrollbar-thumb {
+	background-color: rgba(255, 255, 255, 0.375);
+	border-radius: 99px;
+}
+
+.suggestion ul {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.suggest {
+	width: 100%;
+	color: #fff;
+	font-size: 21px;
+	font-weight: 400;
+	text-decoration: none;
+	padding: 8px 8px;
+	border-radius: 16px;
+	border: 1px solid transparent;
+	outline: none;
+	transition:
+		background-color 0.12s ease-out,
+		border-color 0.12s ease-out;
+	cursor: pointer;
+}
+
+.suggest:hover,
+.suggest:focus {
+	background-color: rgba(255, 255, 255, 0.125);
+}
+
+.suggest:hover {
+	border-color: rgba(255, 255, 255, 0.25);
+}
+
+.suggest:focus {
+	border-color: #fff;
+}
+
+.transition {
+	transition:
+		opacity 0.15s ease-out,
+		transform 0.15s ease-out;
+}
+
+.fade-out-up {
+	opacity: 0;
+	transform: translateY(-16px);
+}
+
+.fade-out-down {
+	opacity: 0;
+	transform: translateY(16px);
+}

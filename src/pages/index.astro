@@ -1,0 +1,66 @@
+---
+import "./index.css";
+// import { ClientRouter } from "astro:transitions";
+import { Font } from "astro:assets";
+import Shortcuts from "../components/shortcuts.astro";
+import Clock from "../components/clock.astro";
+import Search from "../components/search";
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link
+            rel="icon"
+            type="image/svg+xml"
+            href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐳</text></svg>"
+        />
+        <Font cssVariable="--font-inter" preload />
+        <Font cssVariable="--font-google" />
+        <Font cssVariable="--font-kozuka" />
+        <Font cssVariable="--font-harmony" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content={Astro.generator} />
+        <title>New Tab</title>
+    </head>
+
+    <!-- <ClientRouter /> -->
+
+    <body>
+        <div class="overlay"></div>
+        <div class="backdrop"></div>
+        <video class="background" preload="auto" autoplay muted loop>
+            <source src="ba_pv5.mp4" type="video/mp4" />
+        </video>
+        <main>
+            <Clock />
+            <Search client:visible />
+            <Shortcuts />
+        </main>
+    </body>
+</html>
+
+<script>
+    const bg = document.querySelector(".background");
+    if (bg instanceof HTMLVideoElement) {
+        bg.addEventListener("loadeddata", () => bg.classList.add("loaded"), {
+            once: true,
+        });
+
+        const volume = localStorage.getItem("volume");
+        if (volume) {
+            bg.muted = false;
+            bg.volume = Number(volume);
+        }
+
+        // Video Sync
+        window.addEventListener(
+            "visibilitychange",
+            () =>
+                document.visibilityState === "hidden" &&
+                localStorage.setItem("bg:time", bg.currentTime.toString()),
+        );
+        const timestamp = localStorage.getItem("bg:time");
+        bg.currentTime = Number(timestamp);
+    }
+</script>

@@ -1,0 +1,23 @@
+{
+	"name": "Portal",
+	"description": "The blank page you actually want",
+	"incognito": "split",
+	"manifest_version": 3,
+	"host_permissions": [
+		"https://search.brave.com/*",
+		"https://duckduckgo.com/*",
+		"https://www.google.com/*",
+		"https://google.com/*"
+	],
+	"chrome_url_overrides": {
+		"newtab": "index.html"
+	},
+	"icons": {
+		"16": "icons/ext-16.png",
+		"32": "icons/ext-32.png",
+		"48": "icons/ext-48.png",
+		"64": "icons/ext-64.png",
+		"128": "icons/ext-128.png"
+	},
+	"content_scripts": []
+}

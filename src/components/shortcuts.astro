@@ -1,0 +1,67 @@
+---
+import type { SvgComponent } from "astro/types";
+import {
+    Facebook,
+    Twitter,
+    Github,
+    ScriptCat,
+    GreasyFork,
+} from "../assets/svg";
+import "./shortcuts.css";
+
+interface Shortcut {
+    name: string;
+    url: string;
+    svg: SvgComponent;
+}
+
+const shortcuts: Shortcut[] = [
+    {
+        name: "ScriptCat",
+        url: "https://scriptcat.org/en/search",
+        svg: ScriptCat,
+    },
+    {
+        name: "Greasy Fork",
+        url: "https://greasyfork.org/en",
+        svg: GreasyFork,
+    },
+    {
+        name: "Facebook",
+        url: "https://facebook.com",
+        svg: Facebook,
+    },
+    {
+        name: "X",
+        url: "https://x.com",
+        svg: Twitter,
+    },
+    {
+        name: "Github",
+        url: "https://github.com",
+        svg: Github,
+    },
+];
+---
+
+<div class="shortcuts">
+    <div class="items">
+        {
+            shortcuts.map((item) => (
+                <div role="link" data-href={item.url} aria-label={item.name}>
+                    <item.svg />
+                </div>
+            ))
+        }
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll("div[data-href]").forEach((e) => {
+        const href = e.getAttribute("data-href");
+        href &&
+            e.addEventListener("click", () => {
+                window.location.href = href;
+            });
+    });
+</script>

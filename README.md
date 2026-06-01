@@ -1,69 +1,60 @@
-# Clear Morning
-Chrome/Edge "New Tab" page.
+# Chromium Portal
 
 ![Screen Shot 2564-08-28 at 13 51 57](https://user-images.githubusercontent.com/35027979/131209709-94f148a3-1378-4c0b-9e29-490d8061f2c6.png)
 
-Feature:
-- Google suggestion
-- Short cut
-- Video background
-- Weather/rain forcast with UV Index
-	- This will ask location permission once every 2 weeks
+A powerful extension designed to enhanced both your browsing routine and Start/New Tab experience for Chromium-based browsers (Google Chrome, Microsoft Edge, Brave, Helium). Say goodbye to boring defaults and hello to enhanced productivity and visual flair.
 
-## Setup (Chromium)
-1. Clone the repo
+## Features
+- **Dynamic Backgrounds:** Provides customizable and animating background elements.
+- **Intelligent Search:** Instant search suggestions powered by Brave independent search index, giving you immediate answers.
+- **Quick Access (Bangs):** Utilize Bangs, simple and powerful shortcuts to navigate directly to specific URLs.
+- **Shortcuts:** Customize and access your most-used links and commands with a single click.
+- **Live Clock:** Stay organized with a real-time, integrated clock display on your New Tab page.
+- **AI Slop Included** 🤖
 
-2. Go to new tab changer, point to local repo -> index.html
+What are bangs? [Learn more about Bangs here](https://duckduckgo.com/bangs)
 
-## Setup (Safari)
-1. Clone the repo
+## Installation
+First, download the compiled extension from [Releases](https://github.com/Hankung7183/chromium-portal/releases), or build it yourself by following the instructions in [Building Extension](https://github.com/Hankung7183/chromium-portal/tree/master#building-extension). Next, open your browser's extensions tab. Ensure that "Developer mode" is enabled, and then drag and drop the extension zip file into the tab.
 
-2. Go to Safari Preferences -> General -> Home Page -> point to local repo -> index.html
+## Building Extension
 
-## Search bar
-When opening a new tab, the browser search bar will be focused (not the in-page search).
+First, ensure you have installed the Bun JavaScript runtime on your machine. See [Bun](https://bun.com) for detailed instructions.
 
-To use the page search bar, press `TAB` or reload the page once.
-
-By default, the search bar is using Google search but if prefix with certain command, it will redirect to other search engine.
-
-To use a command, type the command name with space and the search query.
-
-For example:
+If Bun is already installed, navigate to the project directory and run
+```bash
+bun install
 ```
-yt blue archive // Search "blue archive" in youtube
+Next, execute the build command
+```bash
+bun run build
 ```
+Once the build process is complete, your extension file will be located at `dist/chromium-portal-{version}.zip`
 
-This will redirect to youtube search with query "blue archive".
+## About this project
 
-### Available Command
-- `yt` - Youtube
-- `gh` - Go directly to github link
-- `ask` - Perplexity search
-- `gpt` - Create a new conversation with ChatGPT
-- `cl` - Create a new conversation with Claude
-- `<number>` (which in range of pinned tab) - Go to pinned tab
+This is a personal fork of [Clear Morning](https://github.com/saltyaom/clear-morning) by [@SaltyAom](https://github.com/saltyaom), with some ideas taken from [Blourful](https://github.com/Blourful/New-Tab-Personal-Fork) fork.
+> Note: This fork is intended for **individual use only**. While I can’t guarantee I’ll fix every open issue here, I always appreciate the feedback. Feel free to submit PRs for improvements, but please ensure they do not break any functionality or negatively impact the visuals (e.g. flickering contents, broken keybindings).
 
-## Shortcut
-Same with command but without space.
-
-Shortcut will go directly to the link.
-
-For example:
-```
-:8000 // Go to http://localhost:8000
-```
-
-### Available Shortcut
-- `:` - http://localhost:<query>
-- `//` - https://<query>
 
 ## Customization
-It's a single html file dude, just do whatever you want.
+~~It's a single html file dude, just do whatever you want.~~
+Yeah, there are a bunch of files compared to the original one, but it is very well organized?, so it's not that hard to figure out :D
 
-## Search hint
-Search hint is a reverse proxy for Google search suggestion.
+To adjust search and suggestion results, you can configure your country using Inspect Element (F12). Open the console and paste the following code
+```js
+// See src/regions.json for supported countries
+localStorage.setItem("country", "kr")
 
-By default it's using `https://search.saltyaom.com/hint` but you can deploy your own.
+// To revert to the default config
+localStorage.removeItem("country")
+```
 
-You can find the source code for [search hint here](https://github.com/saltyaom/ghint) which is a 5mb Go binary.
+You can also enable or adjust video volume using
+```js
+// Range: 0 - 1
+localStorage.setItem("volume", 0.3)
+
+// To revert to the default config
+localStorage.removeItem("volume")
+```

@@ -1,0 +1,40 @@
+.items {
+	position: absolute;
+	display: grid;
+	grid-template-columns: repeat(9, minmax(0, 1fr));
+	gap: 8px;
+	margin-top: 12px;
+	user-select: none;
+}
+
+.items > div,
+.items > button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	width: 44px;
+	height: 44px;
+	border-radius: 20px;
+	background-color: rgba(0, 0, 0, 0.125);
+	border: 1px solid rgba(255, 255, 255, 0.25);
+	backdrop-filter: blur(8px);
+	transition: transform 0.125s ease-out;
+	cursor: pointer;
+}
+
+.items > div:hover,
+.items > div:focus,
+.items > button:hover,
+.items > div:focus {
+	transform: scale(1.1);
+	outline-color: #fff;
+	outline-offset: 4px;
+	outline-width: 1px;
+	/* background-color: rgba(255, 255, 255, 0.125); */
+}
+
+.items > div > svg {
+	position: absolute;
+	padding: 8px;
+}
